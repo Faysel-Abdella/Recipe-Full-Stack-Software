@@ -27,9 +27,14 @@ const AppLayout = () => {
   if (!fontsLoaded && !errorIfTheFontDoesntLoadCorrectly) return null;
 
   return (
-    <View>
-      <Text>AppLayout</Text>
-    </View>
+    <Stack>
+      <Stack.Screen
+        name="index"
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack>
   );
 };
 
