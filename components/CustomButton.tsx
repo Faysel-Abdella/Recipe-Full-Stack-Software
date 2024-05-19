@@ -17,6 +17,7 @@ const CustomButton = ({
   isLoading,
 }: customButtonProps) => {
   return (
+    //
     <TouchableOpacity
       onPress={handleClick}
       activeOpacity={0.7}
