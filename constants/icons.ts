@@ -12,6 +12,10 @@ import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
 import searchBlack from "../assets/icons/searchBlack.png";
+import power from "../assets/icons/power.png";
+import time from "../assets/icons/time.png";
+import loveOutline from "../assets/icons/love_outline.png";
+import loveSolid from "../assets/icons/love_solid.png";
 
 export default {
   play,
@@ -28,4 +32,8 @@ export default {
   eyeHide,
   eye,
   searchBlack,
+  power,
+  time,
+  loveOutline,
+  loveSolid,
 };
