@@ -1,5 +1,16 @@
 # Welcome to your Expo app 👋
 
+Recipe App
+The Recipe App is a web-based application that allows users to search, filter, add, edit, and delete recipes. Users can also save their favorite recipes, provide feedback, and rate recipes. This README file provides an overview of the project and instructions for setting up and running the application.
+
+Features
+Search: Users can search for recipes by entering keywords, ingredients, or dish names into a search bar.
+Filter: Users can narrow down search results or browse recipes based on specific criteria such as cuisine type, dietary restrictions, and preparation time.
+Add Recipe: Users can add new recipes to the app by providing detailed information including ingredients, preparation steps, cooking time, and images.
+Edit Recipe: Users can modify existing recipes, updating any aspect of the recipe including ingredients, instructions, and images.
+Delete Recipe: Users can remove outdated or unwanted recipes from the app.
+Add to Favorite: Users can mark and save their favorite recipes for quic
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
