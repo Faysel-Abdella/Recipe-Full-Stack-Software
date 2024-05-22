@@ -19,10 +19,10 @@ const Home = () => {
       >
         <View className=" py-6">
           <Text className="text-black-200 font-psemibold text-2xl">
-            What are you{" "}
+            Flavor Journey{" "}
           </Text>
           <Text className="text-black-200 font-psemibold text-2xl">
-            cooking today?
+            Explore Today's Best Recipes!
           </Text>
         </View>
 
