@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View,Button, Text, Image, ScrollView } from "react-native";
+import { View, Button, Text, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import SearchInput from "@/components/SearchInput";
@@ -8,18 +8,12 @@ import Category from "@/components/Category";
 import Food from "@/components/Food";
 import Breakfast from "@/components/Breakfast";
 
+import { NavigationProp } from "@react-navigation/native";
 
-
-
-import { NavigationProp } from '@react-navigation/native'
-import { FIREBASE_AUTH } from '../../FirebaseConfig'
-
-
-
-interface RouterProps{
-  navigation:NavigationProp<any,any>;
+interface RouterProps {
+  navigation: NavigationProp<any, any>;
 }
-const Home = ({navigation}:RouterProps) => {
+const Home = ({ navigation }: RouterProps) => {
   const [category, setCatagory] = useState("breakfast");
 
   return (
@@ -28,18 +22,14 @@ const Home = ({navigation}:RouterProps) => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
+        <View
+          style={{
+            alignSelf: "flex-end",
+            marginTop: -5,
+            position: "absolute", // add if dont work with above
+          }}
+        ></View>
 
-<View style={{  
-    alignSelf: 'flex-end',
-    marginTop: -5,
-    position: 'absolute', // add if dont work with above
- }}>
-
-<Button onPress={()=>FIREBASE_AUTH.signOut()} title='Logout'/>
-
-</View>
-
-        
         <View className=" py-6">
           <Text className="text-black-200 font-psemibold text-2xl">
             Flavor Journey{" "}
@@ -50,9 +40,8 @@ const Home = ({navigation}:RouterProps) => {
         </View>
 
         <SearchInput
-        className="col"
+          className="col"
           placeholder="Search any recipe"
-          
           handleChangeText={() => {}}
         />
 
