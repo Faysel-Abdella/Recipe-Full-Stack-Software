@@ -7,8 +7,12 @@ import CustomButton from "@/components/CustomButton";
 import { signUpInfo } from "@/globalTypes";
 import { createUser } from "@/lib/appwrite";
 
+import { useGlobalContext } from "@/context/GlobalProvider";
+
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const [form, setForm] = useState<signUpInfo>({
     username: "",
@@ -30,7 +34,11 @@ const SignUp = () => {
         form.password,
         form.username
       );
-      router.push("/home");
+
+      setUser(newUser);
+      setIsLoggedIn(true);
+
+      router.replace("/home");
     } catch (error: any) {
       console.log(error);
       Alert.alert("Error", error);

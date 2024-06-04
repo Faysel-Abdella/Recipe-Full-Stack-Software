@@ -14,3 +14,8 @@ type signUpInfo = {
   email: string;
   password: string;
 };
+
+interface signInInfo {
+  email: string;
+  password: string;
+}

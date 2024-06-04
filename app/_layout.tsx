@@ -4,6 +4,7 @@ import { SplashScreen, Stack } from "expo-router";
 
 import { View, Text } from "react-native";
 import React from "react";
+import GlobalProvider from "@/context/GlobalProvider";
 
 const AppLayout = () => {
   const [fontsLoaded, errorIfTheFontDoesntLoadCorrectly] = useFonts({
@@ -27,28 +28,30 @@ const AppLayout = () => {
   if (!fontsLoaded && !errorIfTheFontDoesntLoadCorrectly) return null;
 
   return (
-    <Stack>
-      <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-        }}
-      />
+    <GlobalProvider>
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false,
+          }}
+        />
 
-      <Stack.Screen
-        name="(tabs)"
-        options={{
-          headerShown: false,
-        }}
-      />
+        <Stack.Screen
+          name="(tabs)"
+          options={{
+            headerShown: false,
+          }}
+        />
 
-      <Stack.Screen
-        name="(auth)"
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack>
+        <Stack.Screen
+          name="(auth)"
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack>
+    </GlobalProvider>
   );
 };
 
