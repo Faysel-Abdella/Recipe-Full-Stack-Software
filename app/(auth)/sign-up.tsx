@@ -5,6 +5,7 @@ import { Link, router } from "expo-router";
 import FormField from "@/components/FormField";
 import CustomButton from "@/components/CustomButton";
 import { signUpInfo } from "@/globalTypes";
+import { createUser } from "@/lib/appwrite";
 
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -15,7 +16,28 @@ const SignUp = () => {
     password: "",
   });
 
-  const submit = () => {};
+  const submit = async () => {
+    if (!form.email || !form.password || !form.username) {
+      Alert.alert("Error", "All fields are required");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const newUser = await createUser(
+        form.email,
+        form.password,
+        form.username
+      );
+      router.push("/home");
+    } catch (error: any) {
+      console.log(error);
+      Alert.alert("Error", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">

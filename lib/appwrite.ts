@@ -1,3 +1,4 @@
+import { Alert } from "react-native";
 import {
   Client,
   Account,
@@ -30,3 +31,53 @@ const account = new Account(client);
 const avatars = new Avatars(client);
 const databases = new Databases(client);
 const storage = new Storage(client);
+
+export const createUser = async (
+  email: string,
+  password: string,
+  username: string
+) => {
+  try {
+    const newAccount = await account.create(
+      ID.unique(),
+      email.trim(),
+      password,
+      username
+    );
+
+    if (!newAccount) throw Error;
+
+    const avatarUrl = avatars.getInitials(username);
+
+    await signIn(email, password);
+
+    const newUser = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      ID.unique(),
+      {
+        accountId: newAccount.$id,
+        email: email.trim(),
+        username: username,
+        avatar: avatarUrl,
+      }
+    );
+
+    return newUser;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
+const signIn = async (email: string, password: string) => {
+  try {
+    const session = await account.createEmailPasswordSession(
+      email.trim(),
+      password
+    );
+    return session;
+  } catch (error: any) {
+    Alert.alert("Error", error);
+    throw new Error(error);
+  }
+};
