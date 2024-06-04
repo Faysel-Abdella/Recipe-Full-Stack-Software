@@ -9,9 +9,12 @@
     "userInterfaceStyle": "automatic",
 
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "package": "com.astu.recipe"
     },
-    "android": {},
+    "android": {
+      "package": "com.astu.recipe"
+    },
     "web": {
       "bundler": "metro",
       "output": "static"

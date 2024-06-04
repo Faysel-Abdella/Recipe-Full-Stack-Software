@@ -4,9 +4,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, router } from "expo-router";
 import FormField from "@/components/FormField";
 import CustomButton from "@/components/CustomButton";
+import { signUpInfo } from "@/globalTypes";
 
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const [form, setForm] = useState<signUpInfo>({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const submit = () => {};
 
@@ -20,28 +27,28 @@ const SignUp = () => {
 
           <FormField
             title="Username"
-            // value={form.username}
-            // handleChangeText={(e: any) => setForm({ ...form, username: e })}
+            value={form.username}
+            handleChangeText={(e: any) => setForm({ ...form, username: e })}
             otherStyle="mt-7"
           />
 
           <FormField
             title="Email"
-            // value={form.email}
-            // handleChangeText={(e: any) => setForm({ ...form, email: e })}
+            value={form.email}
+            handleChangeText={(e: any) => setForm({ ...form, email: e })}
             otherStyle="mt-7"
           />
 
           <FormField
             title="Password"
-            // value={form.password}
-            // handleChangeText={(e: any) => setForm({ ...form, password: e })}
+            value={form.password}
+            handleChangeText={(e: any) => setForm({ ...form, password: e })}
             otherStyle="mt-7"
           />
 
           <CustomButton
             title="Sign Up"
-            handlePress={submit}
+            handleClick={submit}
             containerStyles="mt-7"
             isLoading={isSubmitting}
           />

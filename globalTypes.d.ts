@@ -8,3 +8,9 @@ type foodProps = {
   power: string;
   minute: string;
 };
+
+type signUpInfo = {
+  username: string;
+  email: string;
+  password: string;
+};

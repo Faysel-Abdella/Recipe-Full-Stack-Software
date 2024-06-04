@@ -4,7 +4,7 @@ import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 type customButtonProps = {
   title: string;
-  textStyles: string;
+  textStyles?: string;
   containerStyles: string;
   handleClick: () => void;
   isLoading: boolean;
