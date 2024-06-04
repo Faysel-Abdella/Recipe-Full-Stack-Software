@@ -26,7 +26,7 @@ const App = () => {
           <View className="left-4">
             <CustomButton
               containerStyles="mt-10"
-              handleClick={() => router.push("/home")}
+              handleClick={() => router.push("/sign-up")}
               isLoading={false}
               textStyles=""
               title="Get Started"
