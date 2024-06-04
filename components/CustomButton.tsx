@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 type customButtonProps = {
   title: string;
@@ -26,9 +27,13 @@ const CustomButton = ({
       }`}
       disabled={isLoading}
     >
-      <Text className={`text-primary font-psemibold text-lg ${textStyles}`}>
-        {title}
-      </Text>
+      {isLoading ? (
+        <ActivityIndicator animating={true} color="white" size="small" />
+      ) : (
+        <Text className={`text-primary font-psemibold text-lg ${textStyles}`}>
+          {title}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
