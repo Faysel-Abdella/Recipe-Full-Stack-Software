@@ -9,12 +9,15 @@ import Food from "@/components/Food";
 import Breakfast from "@/components/Breakfast";
 
 import { NavigationProp } from "@react-navigation/native";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
 const Home = ({ navigation }: RouterProps) => {
   const [category, setCatagory] = useState("breakfast");
+
+  const { user } = useGlobalContext();
 
   return (
     <SafeAreaView className="bg-slate-300 px-4 h-full">
@@ -32,7 +35,7 @@ const Home = ({ navigation }: RouterProps) => {
 
         <View className=" py-6">
           <Text className="text-black-200 font-psemibold text-2xl">
-            Flavor Journey{" "}
+            Hi, {user.username}!{" "}
           </Text>
           <Text className="text-black-200 font-psemibold text-2xl">
             Explore Today's Best Recipes!

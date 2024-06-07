@@ -2,11 +2,13 @@ import { ImageSourcePropType } from "react-native";
 
 type foodProps = {
   id: number;
-  img: ImageSourcePropType;
   title: string;
+  img: ImageSourcePropType;
+  description?: string;
   favorite: boolean;
   power: string;
   minute: string;
+  onPress?: any;
 };
 
 type signUpInfo = {
