@@ -4,6 +4,7 @@ import {
   Image,
   TouchableOpacity,
   ImageSourcePropType,
+  ImageBackground,
 } from "react-native";
 import React from "react";
 
@@ -11,21 +12,21 @@ import images from "@/constants/images";
 import icons from "@/constants/icons";
 import { foodProps } from "@/globalTypes";
 
-const Food = ({ img, title, favorite, power, minute, onPress }: foodProps) => {
+const Food = ({ imgUrl, title, power, minute, onPress }: foodProps) => {
   return (
     <View>
       <TouchableOpacity onPress={onPress} activeOpacity={1}>
         <View className="relative w-[170px]">
           <TouchableOpacity className="absolute top-1 right-2 z-10 w-8 h-8 rounded-full bg-white justify-center items-center">
             <Image
-              source={favorite ? icons.loveSolid : icons.loveOutline}
+              source={false ? icons.loveSolid : icons.loveOutline}
               className="w-4 h-4"
             />
           </TouchableOpacity>
 
           <View className="items-center">
             <Image
-              source={img}
+              source={{ uri: imgUrl }}
               className="h-[120px] w-[170px] rounded-[15px]"
               resizeMode="cover"
             />

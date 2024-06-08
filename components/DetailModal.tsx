@@ -6,6 +6,8 @@ import { Video, ResizeMode } from "expo-av";
 const DetailModal = ({ selectedFood }: any) => {
   return (
     <ScrollView
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
       style={{
         flex: 1,
         backgroundColor: "#F0ECBC",
@@ -14,13 +16,14 @@ const DetailModal = ({ selectedFood }: any) => {
         paddingVertical: 20,
         paddingHorizontal: 15,
         paddingBottom: 50,
+        overflow: "visible",
       }}
     >
       {selectedFood && (
         <ScrollView className="pb-10">
           <View>
             <Image
-              source={selectedFood.img}
+              source={{ uri: selectedFood.thumbnail }}
               className="h-[350px] w-full rounded-[30px]"
               resizeMode="cover"
             />
@@ -36,7 +39,7 @@ const DetailModal = ({ selectedFood }: any) => {
                 resizeMode="contain"
               />
               <Text className="text-base font-pmedium">
-                {selectedFood.power} Cal
+                {selectedFood.calory} Cal
               </Text>
             </View>
             <View className="flex-row justify-center items-center space-x-2">
@@ -46,7 +49,7 @@ const DetailModal = ({ selectedFood }: any) => {
                 resizeMode="contain"
               />
               <Text className="text-base font-pmedium">
-                {selectedFood.minute} min
+                {selectedFood.minutes} min
               </Text>
             </View>
           </View>
@@ -67,7 +70,7 @@ const DetailModal = ({ selectedFood }: any) => {
 
           <Video
             source={{
-              uri: "https://cloud.appwrite.io/v1/storage/buckets/66483c7e001143a7e082/files/665d808e0013b2357813/view?project=6648302400374d5a99ca&mode=admin",
+              uri: selectedFood.video,
             }}
             resizeMode={ResizeMode.CONTAIN}
             useNativeControls

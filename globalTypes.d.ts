@@ -3,9 +3,9 @@ import { ImageSourcePropType } from "react-native";
 type foodProps = {
   id: number;
   title: string;
-  img: ImageSourcePropType;
+  imgUrl: string;
   description?: string;
-  favorite: boolean;
+  video?: string;
   power: string;
   minute: string;
   onPress?: any;
