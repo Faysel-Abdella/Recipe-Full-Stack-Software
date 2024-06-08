@@ -19,7 +19,7 @@ import { router } from "expo-router";
 import { Picker } from "@react-native-picker/picker";
 import * as ImagePicker from "expo-image-picker";
 
-// import { createVideo } from "@/lib/appwrite";
+import { postFeed } from "@/lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
 
 const Plan = () => {
@@ -28,10 +28,13 @@ const Plan = () => {
 
   const [uploading, setUploading] = useState(false);
   const [form, setForm] = useState<any>({
+    category: "",
     title: "",
-    video: null,
+    description: "",
+    minutes: "",
+    calory: "",
     thumbnail: null,
-    prompt: "",
+    video: null,
   });
 
   const openPicker = async (selectType: any) => {
@@ -59,17 +62,25 @@ const Plan = () => {
   };
 
   const submit = async () => {
-    if (!form.prompt || !form.title || !form.thumbnail || !form.video) {
+    if (
+      !form.category ||
+      !form.title ||
+      !form.description ||
+      !form.minutes ||
+      !form.calory ||
+      !form.thumbnail ||
+      !form.video
+    ) {
       return Alert.alert("Please fill in all the fields");
     }
 
     setUploading(true);
 
     try {
-      //  await createVideo({
-      //    ...form,
-      //    userId: user.$id,
-      //  });
+      await postFeed({
+        ...form,
+        userId: user.$id,
+      });
       Alert.alert("Success", "Post uploaded successfully");
       router.push("/home");
     } catch (error: any) {
@@ -103,9 +114,10 @@ const Plan = () => {
             <Picker
               dropdownIconColor="white"
               selectedValue={selectedValue}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedValue(itemValue)
-              }
+              onValueChange={(itemValue, itemIndex) => {
+                setForm({ ...form, category: itemValue });
+                setSelectedValue(itemValue);
+              }}
               dropdownIconRippleColor={"yellow"}
               onFocus={() => {
                 setModalVisible(true);
@@ -143,27 +155,27 @@ const Plan = () => {
 
         <FormField
           title="Describe your recipe"
-          value={form.title}
+          value={form.description}
           placeholder="How to prepare this recipe, ingredients, etc..."
-          handleChangeText={(e: any) => setForm({ ...form, title: e })}
+          handleChangeText={(e: any) => setForm({ ...form, description: e })}
           otherStyle="mt-10"
         />
 
         <FormField
           title="Minutes to prepare"
-          value={form.title}
+          value={form.minutes}
           placeholder=" How many minutes to prepare this ?"
           keyboardType="numeric"
-          handleChangeText={(e: any) => setForm({ ...form, title: e })}
+          handleChangeText={(e: any) => setForm({ ...form, minutes: e })}
           otherStyle="mt-10"
         />
 
         <FormField
           title="Calories"
-          value={form.title}
+          value={form.calory}
           placeholder=" How many calories in this recipe?"
           keyboardType="numeric"
-          handleChangeText={(e: any) => setForm({ ...form, title: e })}
+          handleChangeText={(e: any) => setForm({ ...form, calory: e })}
           otherStyle="mt-10"
         />
 
