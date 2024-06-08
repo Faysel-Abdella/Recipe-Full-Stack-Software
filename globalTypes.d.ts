@@ -11,6 +11,16 @@ type foodProps = {
   onPress?: any;
 };
 
+type postFeedProps = {
+  category: string;
+  title: string;
+  description: string;
+  minutes: string;
+  calory: string;
+  thumbnail: string;
+  video: string;
+};
+
 type signUpInfo = {
   username: string;
   email: string;

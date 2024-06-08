@@ -1,3 +1,4 @@
+import { postFeedProps } from "@/globalTypes";
 import { Alert } from "react-native";
 import {
   Client,
@@ -102,3 +103,13 @@ export const getCurrentUser = async () => {
     console.log(error);
   }
 };
+
+// export const postFeed = async ({
+//   category,
+//   title,
+//   description,
+//   minutes,
+//   calory,
+//   thumbnail,
+//   video,
+// }: postFeedProps) => {};

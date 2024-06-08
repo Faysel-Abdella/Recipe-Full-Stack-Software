@@ -80,11 +80,11 @@ const TabsLayout = () => {
         <Tabs.Screen
           name="plan"
           options={{
-            title: "Meal Plan",
+            title: "Share recipe",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                name="Meal Plan"
+                name="Share Recipe"
                 icon={icons.plus}
                 color={color}
                 focused={focused}
