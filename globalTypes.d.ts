@@ -1,7 +1,7 @@
 import { ImageSourcePropType } from "react-native";
 
 type foodProps = {
-  id: number;
+  id: string;
   title: string;
   imgUrl: string;
   description?: string;

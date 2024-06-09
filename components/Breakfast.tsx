@@ -28,14 +28,9 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 const Breakfast = () => {
   const [category, setCatagory] = useState("breakfast");
 
-  const [selectedFood, setSelectedFood] = useState<foodProps | null>(null);
+  const [selectedFood, setSelectedFood] = useState<any>(null);
 
   const { data: posts = [], refetch } = useAppwrite(getAllPosts);
-
-  // console.log(posts[0].title);
-  // console.log(posts[0].description);
-  // console.log(posts[0].minutes);
-  // console.log(posts[0].thumbnail);
 
   const [refreshing, setRefreshing] = useState(false);
 

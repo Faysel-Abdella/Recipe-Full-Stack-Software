@@ -8,9 +8,15 @@ import { Alert } from "react-native";
 
 // Custom hook is just a function with the name starts with 'use' and uses the react hooks inside it
 
-const useAppwrite = (fn) => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+interface UseAppwriteResponse<T> {
+  data: T[];
+  isLoading: boolean;
+  refetch: () => void;
+}
+
+const useAppwrite = <T>(fn: () => Promise<T[]>): UseAppwriteResponse<T> => {
+  const [data, setData] = useState<T[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -19,7 +25,7 @@ const useAppwrite = (fn) => {
       const response = await fn();
 
       setData(response);
-    } catch (error) {
+    } catch (error: any) {
       Alert.alert("Error", error.message);
     } finally {
       setIsLoading(false);
