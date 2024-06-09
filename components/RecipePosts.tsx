@@ -1,43 +1,23 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  SafeAreaView,
-  Image,
-  ScrollView,
-  RefreshControl,
-} from "react-native";
+import { View, FlatList, SafeAreaView, RefreshControl } from "react-native";
 import Modal from "react-native-modal";
 
-import SearchInput from "@/components/SearchInput";
-import images from "@/constants/images";
-import Category from "@/components/Category";
-
-import breakfasts from "@/constants/breakfasts";
 import Food from "./Food";
-import { foodProps } from "@/globalTypes";
-import { icons } from "@/constants";
+
 import DetailModal from "./DetailModal";
 import useAppwrite from "@/lib/useAppwrite";
 import {
   getAllBreakfastPosts,
   getAllDinnerPosts,
   getAllLunchPosts,
-  getAllPosts,
 } from "@/lib/appwrite";
 
-import { NavigationProp } from "@react-navigation/native";
-import { useGlobalContext } from "@/context/GlobalProvider";
-import Categories from "./Categories";
 import RecipeListHeader from "./RecipeListHeader";
 
-const Breakfast = () => {
+const RecipePosts = () => {
   const [category, setCategory] = useState("breakfast");
 
   const [selectedFood, setSelectedFood] = useState<any>(null);
-
-  const { data: posts = [], refetch } = useAppwrite(getAllPosts);
 
   const { data: breakfasts = [], refetch: refetchBreakfast } =
     useAppwrite(getAllBreakfastPosts);
@@ -48,11 +28,19 @@ const Breakfast = () => {
 
   const [refreshing, setRefreshing] = useState(false);
 
-  const { user } = useGlobalContext();
-
-  const onRefresh = async () => {
+  const onRefreshBreakfast = async () => {
     setRefreshing(true);
-    await refetch();
+    await refetchBreakfast();
+    setRefreshing(false);
+  };
+  const onRefreshLunch = async () => {
+    setRefreshing(true);
+    await refetchLunch();
+    setRefreshing(false);
+  };
+  const onRefreshDinner = async () => {
+    setRefreshing(true);
+    await refetchDinner();
     setRefreshing(false);
   };
 
@@ -91,10 +79,10 @@ const Breakfast = () => {
             refreshing={refreshing}
             onRefresh={
               category == "breakfast"
-                ? refetchBreakfast
+                ? onRefreshBreakfast
                 : category == "lunch"
-                ? refetchLunch
-                : refetchDinner
+                ? onRefreshLunch
+                : onRefreshDinner
             }
           />
         }
@@ -115,4 +103,4 @@ const Breakfast = () => {
   );
 };
 
-export default Breakfast;
+export default RecipePosts;
