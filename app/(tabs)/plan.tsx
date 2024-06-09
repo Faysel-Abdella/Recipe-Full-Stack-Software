@@ -154,6 +154,7 @@ const Plan = () => {
         />
 
         <FormField
+          multiline={true}
           title="Describe your recipe"
           value={form.description}
           placeholder="How to prepare this recipe, ingredients, etc..."

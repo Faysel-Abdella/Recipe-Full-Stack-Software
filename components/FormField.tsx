@@ -9,6 +9,7 @@ const FormField = ({
   otherStyle,
   keyboardType,
   placeholder,
+  multiline,
 }: any) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -18,6 +19,8 @@ const FormField = ({
 
       <View className="border-2 border-black-200 w-full h-16 px-4 bg-black-100 rounded-2xl focus:border-secondary flex-row items-center">
         <TextInput
+          multiline={multiline}
+          numberOfLines={multiline ? 4 : 1}
           keyboardType={keyboardType}
           className="flex-1 text-white font-psemibold text-base"
           value={value}
