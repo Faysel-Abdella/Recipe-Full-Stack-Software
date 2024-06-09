@@ -13,6 +13,7 @@ import {
 } from "@/lib/appwrite";
 
 import RecipeListHeader from "./RecipeListHeader";
+import EmptyState from "./EmptyState";
 
 const RecipePosts = () => {
   const [category, setCategory] = useState("breakfast");
@@ -86,6 +87,14 @@ const RecipePosts = () => {
             }
           />
         }
+        ListEmptyComponent={
+          <EmptyState
+            title={`No ${category} found`}
+            subtitle={`Be the first to create a ${category} post and share it with others!`}
+          />
+        }
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
 
       <Modal

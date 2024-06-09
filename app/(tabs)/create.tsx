@@ -22,7 +22,7 @@ import * as ImagePicker from "expo-image-picker";
 import { postFeed } from "@/lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
 
-const Plan = () => {
+const Create = () => {
   const [selectedValue, setSelectedValue] = useState("option1");
   const { user } = useGlobalContext();
 
@@ -246,4 +246,4 @@ const Plan = () => {
   );
 };
 
-export default Plan;
+export default Create;

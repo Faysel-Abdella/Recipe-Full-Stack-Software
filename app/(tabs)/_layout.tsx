@@ -78,7 +78,7 @@ const TabsLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="plan"
+          name="create"
           options={{
             title: "Share recipe",
             headerShown: false,
