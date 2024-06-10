@@ -58,11 +58,13 @@ const RecipePosts = () => {
             ? lunch
             : dinner
         }
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        keyExtractor={(item) => item.$id}
         ListHeaderComponent={
           <RecipeListHeader category={category} setCategory={setCategory} />
         }
-        numColumns={2}
-        keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <View className="w-1/2 my-4" key={item.$id}>
             <Food
@@ -93,8 +95,6 @@ const RecipePosts = () => {
             subtitle={`Be the first to create a ${category} post and share it with others!`}
           />
         }
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
       />
 
       <Modal

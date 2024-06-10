@@ -1,14 +1,6 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ImageSourcePropType,
-  ImageBackground,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-import images from "@/constants/images";
 import icons from "@/constants/icons";
 import { foodProps } from "@/globalTypes";
 
