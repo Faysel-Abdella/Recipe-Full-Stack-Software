@@ -1,9 +1,10 @@
-import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Image, ScrollView, ActivityIndicator } from "react-native";
 import { icons } from "@/constants";
 import { Video, ResizeMode } from "expo-av";
 
 const DetailModal = ({ selectedFood }: any) => {
+  const [isVideoLoading, setVideoIsLoading] = useState(true);
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
@@ -22,10 +23,16 @@ const DetailModal = ({ selectedFood }: any) => {
       {selectedFood && (
         <ScrollView className="pb-10">
           <View>
+            {isVideoLoading && (
+              <ActivityIndicator size="large" color="#0000ff" />
+            )}
+
             <Image
               source={{ uri: selectedFood.thumbnail }}
               className="h-[350px] w-full rounded-[30px]"
               resizeMode="cover"
+              onLoadStart={() => setVideoIsLoading(true)}
+              onLoadEnd={() => setVideoIsLoading(false)}
             />
           </View>
           <Text className="mt-5 text-3xl font-pbold text-black">
@@ -76,6 +83,8 @@ const DetailModal = ({ selectedFood }: any) => {
             useNativeControls
             shouldPlay={true}
             className="h-[350px] w-full rounded-[30px]"
+            onLoadStart={() => setVideoIsLoading(true)}
+            onLoad={() => setVideoIsLoading(false)}
           />
         </ScrollView>
       )}

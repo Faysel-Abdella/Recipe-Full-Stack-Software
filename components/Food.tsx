@@ -1,10 +1,18 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+import React, { useState } from "react";
 
 import icons from "@/constants/icons";
 import { foodProps } from "@/globalTypes";
 
 const Food = ({ imgUrl, title, power, minute, onPress }: foodProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <View>
       <TouchableOpacity onPress={onPress} activeOpacity={1}>
@@ -17,10 +25,13 @@ const Food = ({ imgUrl, title, power, minute, onPress }: foodProps) => {
           </TouchableOpacity>
 
           <View className="items-center">
+            {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
             <Image
               source={{ uri: imgUrl }}
               className="h-[120px] w-[170px] rounded-[15px]"
               resizeMode="cover"
+              onLoadStart={() => setIsLoading(true)}
+              onLoadEnd={() => setIsLoading(false)}
             />
           </View>
         </View>
