@@ -50,7 +50,7 @@ const TabsLayout = () => {
     await signOut();
     setIsLoggedIn(false);
     setUser(null);
-    router.replace("/sign-up");
+    router.replace("/");
   };
 
   return (
