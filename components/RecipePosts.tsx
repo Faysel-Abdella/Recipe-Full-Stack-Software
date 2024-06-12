@@ -48,6 +48,27 @@ const RecipePosts = () => {
   const closeModal = () => {
     setSelectedFood(null);
   };
+
+  useEffect(() => {
+    if (category === "breakfast") {
+      onRefreshBreakfast();
+    } else if (category === "lunch") {
+      onRefreshLunch();
+    } else {
+      onRefreshDinner();
+    }
+  }, [category]);
+
+  useEffect(() => {
+    if (category === "breakfast") {
+      onRefreshBreakfast();
+    } else if (category === "lunch") {
+      onRefreshLunch();
+    } else {
+      onRefreshDinner();
+    }
+  }, []);
+
   return (
     <SafeAreaView className="flex-1 mt-6">
       <FlatList

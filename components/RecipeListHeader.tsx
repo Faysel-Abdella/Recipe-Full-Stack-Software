@@ -8,6 +8,8 @@ import { images } from "@/constants";
 const RecipeListHeader = ({ category, setCategory }: any) => {
   const { user } = useGlobalContext();
 
+  // console.log("User in home", user);
+
   return (
     <View>
       <View
@@ -20,7 +22,7 @@ const RecipeListHeader = ({ category, setCategory }: any) => {
 
       <View className=" py-6">
         <Text className="text-black-200 font-psemibold text-2xl">
-          Hi, {user.username}!{" "}
+          Hi, {user ? user.username : ""}!{" "}
         </Text>
         <Text className="text-black-200 font-psemibold text-2xl">
           Explore Today's Best Recipes!

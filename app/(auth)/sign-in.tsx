@@ -28,7 +28,7 @@ const SignIn = () => {
     setIsSubmitting(true);
 
     try {
-      console.log(form.email, form.password);
+      await signIn(form.email, form.password);
 
       const currentUser = getCurrentUser();
 

@@ -48,9 +48,9 @@ const TabsLayout = () => {
   const handleLogout = async () => {
     console.log("Logged out");
     await signOut();
-    setUser(null);
     setIsLoggedIn(false);
-    router.replace("/sign-in");
+    setUser(null);
+    router.replace("/sign-up");
   };
 
   return (
