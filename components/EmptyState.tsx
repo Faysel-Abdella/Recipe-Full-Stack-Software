@@ -33,3 +33,4 @@ const EmptyState = ({ title, subtitle }: any) => {
 };
 
 export default EmptyState;
+//empty state
