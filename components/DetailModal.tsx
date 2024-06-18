@@ -60,17 +60,17 @@ const DetailModal = ({ selectedFood }: any) => {
               </Text>
             </View>
           </View>
-
+          {/* Description */}
           <Text className="mt-9 text-3xl font-pbold text-black underline">
             Description
           </Text>
-
+          {/* selectedFood */}
           <View>
             <Text className="mt-3 text-base font-pmedium">
               {selectedFood.description}
             </Text>
           </View>
-
+          {/* How to make it */}
           <Text className="mt-9 text-3xl font-pbold text-black underline">
             How to make it ?
           </Text>
