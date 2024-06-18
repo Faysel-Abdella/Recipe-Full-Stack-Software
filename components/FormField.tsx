@@ -22,20 +22,21 @@ const FormField = ({
           multiline={multiline}
           numberOfLines={multiline ? 4 : 1}
           keyboardType={keyboardType}
-          className="flex-1 text-white font-psemibold text-base"
           value={value}
           placeholder={placeholder}
+          secureTextEntry={title === "Password" && !showPassword}
+          className="flex-1 text-white font-psemibold text-base"
           placeholderTextColor="#7b7b8b"
           onChangeText={handleChangeText}
-          secureTextEntry={title === "Password" && !showPassword}
         />
 
         {title === "Password" && (
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            {/* add image */}
             <Image
-              source={!showPassword ? icons.eye : icons.eyeHide}
               className="w-6 h-6"
               resizeMode="contain"
+              source={!showPassword ? icons.eye : icons.eyeHide}
             />
           </TouchableOpacity>
         )}
