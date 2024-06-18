@@ -29,10 +29,10 @@ const DetailModal = ({ selectedFood }: any) => {
 
             <Image
               source={{ uri: selectedFood.thumbnail }}
-              className="h-[350px] w-full rounded-[30px]"
               resizeMode="cover"
-              onLoadStart={() => setVideoIsLoading(true)}
               onLoadEnd={() => setVideoIsLoading(false)}
+              onLoadStart={() => setVideoIsLoading(true)}
+              className="h-[350px] w-full rounded-[30px]"
             />
           </View>
           <Text className="mt-5 text-3xl font-pbold text-black">
