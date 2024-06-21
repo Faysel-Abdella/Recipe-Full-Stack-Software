@@ -19,6 +19,9 @@ const EmptyState = ({ title, subtitle }: any) => {
         resizeMode="contain"
       />
 
+      {/* This Image component displays an "empty" image, which is likely a placeholder or illustration. The image is set to a fixed size and is resized to fit the container. */}
+
+      
       <Text className="text-xl font-psemibold text-center text-gray-800 mt-2">
         {title}
       </Text>
