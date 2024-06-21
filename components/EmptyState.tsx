@@ -26,6 +26,9 @@ const EmptyState = ({ title, subtitle }: any) => {
         {title}
       </Text>
 
+      {/* This Text component displays the provided `title` prop in a semi-bold font, centered, and with a gray color. It also adds some margin-top. */}
+
+
       <Text className="mt-3 font-pmedium text-sm text-gray-800 ">
         {subtitle}
       </Text>
