@@ -7,6 +7,9 @@ import { images } from "@/constants";
 import { router } from "expo-router";
 import CustomButton from "./CustomButton";
 
+// This component represents an empty state, typically used when there is no data to display.
+  // It takes two props: `title` and `subtitle`, which are used to display a message to the user.
+
 const EmptyState = ({ title, subtitle }: any) => {
   return (
     <View className="justify-center items-center px-4">
