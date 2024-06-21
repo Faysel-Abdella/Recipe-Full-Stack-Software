@@ -39,6 +39,7 @@ const EmptyState = ({ title, subtitle }: any) => {
         containerStyles="w-full my-5"
         isLoading={false}
       />
+      {/* This CustomButton component displays a button with the title "Share your recipe". When clicked, it navigates the user to the "/create" route. The button is set to the full width of the container and has some margin on the top and bottom. The `isLoading` prop is set to `false`, indicating that the button is not in a loading state. */}
     </View>
   );
 };
