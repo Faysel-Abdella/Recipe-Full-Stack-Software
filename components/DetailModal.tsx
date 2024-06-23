@@ -3,6 +3,7 @@ import { View, Text, Image, ScrollView, ActivityIndicator } from "react-native";
 import { icons } from "@/constants";
 import { Video, ResizeMode } from "expo-av";
 
+// State to track the video loading status
 const DetailModal = ({ selectedFood }: any) => {
   const [isVideoLoading, setVideoIsLoading] = useState(true);
   return (
@@ -20,6 +21,8 @@ const DetailModal = ({ selectedFood }: any) => {
         overflow: "visible",
       }}
     >
+
+      {/* Render the content only when a food item is selected */}
       {selectedFood && (
         <ScrollView className="pb-10">
           <View>
@@ -27,6 +30,7 @@ const DetailModal = ({ selectedFood }: any) => {
               <ActivityIndicator size="large" color="#0000ff" />
             )}
 
+            {/* Render the thumbnail image of the selected food */}
             <Image
               source={{ uri: selectedFood.thumbnail }}
               resizeMode="cover"
@@ -35,11 +39,14 @@ const DetailModal = ({ selectedFood }: any) => {
               className="h-[350px] w-full rounded-[30px]"
             />
           </View>
+          {/* Render the title of the selected food */}
           <Text className="mt-5 text-3xl font-pbold text-black">
             {selectedFood.title}
           </Text>
           <View className="flex-row gap-2">
+             {/* Render the calory information */}
             <View className="flex-row justify-center items-center">
+             
               <Image
                 source={icons.power}
                 className="w-7 h-7"
@@ -49,6 +56,7 @@ const DetailModal = ({ selectedFood }: any) => {
                 {selectedFood.calory} Cal
               </Text>
             </View>
+            {/* Render the preparation time information */}
             <View className="flex-row justify-center items-center space-x-2">
               <Image
                 source={icons.time}
@@ -58,6 +66,7 @@ const DetailModal = ({ selectedFood }: any) => {
               <Text className="text-base font-pmedium">
                 {selectedFood.minutes} min
               </Text>
+              
             </View>
           </View>
           {/* Description */}
@@ -75,6 +84,7 @@ const DetailModal = ({ selectedFood }: any) => {
             How to make it ?
           </Text>
 
+          {/* Render the video player for the selected food */}
           <Video
             source={{
               uri: selectedFood.video,
