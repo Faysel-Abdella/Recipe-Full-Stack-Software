@@ -39,7 +39,7 @@ const DetailModal = ({ selectedFood }: any) => {
               className="h-[350px] w-full rounded-[30px]"
             />
           </View>
-          {/* Render the title of the selected food */}
+          
           <Text className="mt-5 text-3xl font-pbold text-black">
             {selectedFood.title}
           </Text>
