@@ -15,11 +15,14 @@ import {
 import RecipeListHeader from "./RecipeListHeader";
 import EmptyState from "./EmptyState";
 
+// State to keep track of the current category (breakfast, lunch, or dinner)
 const RecipePosts = () => {
   const [category, setCategory] = useState("breakfast");
 
+  // State to store the currently selected food item
   const [selectedFood, setSelectedFood] = useState<any>(null);
 
+  // Use the useAppwrite hook to fetch data for each category
   const { data: breakfasts = [], refetch: refetchBreakfast } =
     useAppwrite(getAllBreakfastPosts);
   const { data: lunch = [], refetch: refetchLunch } =
@@ -27,8 +30,10 @@ const RecipePosts = () => {
   const { data: dinner = [], refetch: refetchDinner } =
     useAppwrite(getAllDinnerPosts);
 
+  // State to track whether the list is being refreshed
   const [refreshing, setRefreshing] = useState(false);
 
+  // Functions to handle refreshing the list for each category
   const onRefreshBreakfast = async () => {
     setRefreshing(true);
     await refetchBreakfast();
@@ -45,10 +50,12 @@ const RecipePosts = () => {
     setRefreshing(false);
   };
 
+  // Function to close the detail modal
   const closeModal = () => {
     setSelectedFood(null);
   };
 
+  // Fetch the data for the current category when the category changes
   useEffect(() => {
     if (category === "breakfast") {
       onRefreshBreakfast();
@@ -59,6 +66,7 @@ const RecipePosts = () => {
     }
   }, [category]);
 
+  // Fetch the data for the initial category when the component mounts
   useEffect(() => {
     if (category === "breakfast") {
       onRefreshBreakfast();
@@ -79,13 +87,18 @@ const RecipePosts = () => {
             ? lunch
             : dinner
         }
+        // Hide horizontal and vertical scroll indicators
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        // Display 2 items per row
         numColumns={2}
+        // Use the $id property as the unique key for each item
         keyExtractor={(item) => item.$id}
+        // Render the header component
         ListHeaderComponent={
           <RecipeListHeader category={category} setCategory={setCategory} />
         }
+        // Render each item using the Food component
         renderItem={({ item }) => (
           <View className="w-1/2 my-4" key={item.$id}>
             <Food
@@ -98,6 +111,7 @@ const RecipePosts = () => {
             />
           </View>
         )}
+        // Implement the pull-to-refresh functionality
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -118,6 +132,7 @@ const RecipePosts = () => {
         }
       />
 
+      // Render the empty state component if the list is empty
       <Modal
         isVisible={selectedFood !== null}
         onBackdropPress={closeModal}
