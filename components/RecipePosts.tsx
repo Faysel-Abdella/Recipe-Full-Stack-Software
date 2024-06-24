@@ -124,6 +124,7 @@ const RecipePosts = () => {
             }
           />
         }
+        // it displays empty if no category is found
         ListEmptyComponent={
           <EmptyState
             title={`No ${category} found`}
