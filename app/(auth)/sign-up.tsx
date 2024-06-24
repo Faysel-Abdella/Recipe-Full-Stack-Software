@@ -14,12 +14,14 @@ const SignUp = () => {
 
   const { setUser, setIsLoggedIn } = useGlobalContext();
 
+  // State to manage form data
   const [form, setForm] = useState<signUpInfo>({
     username: "",
     email: "",
     password: "",
   });
 
+    // Function to handle form submission
   const submit = async () => {
     if (!form.email || !form.password || !form.username) {
       Alert.alert("Error", "All fields are required");
@@ -29,6 +31,7 @@ const SignUp = () => {
     setIsSubmitting(true);
 
     try {
+       // Attempt to create a new user with provided details
       const newUser = await createUser(
         form.email,
         form.password,
