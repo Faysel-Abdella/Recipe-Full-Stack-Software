@@ -10,8 +10,10 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 import { signInInfo } from "@/globalTypes";
 
 const SignIn = () => {
+  // State to manage the form submission status
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
+  
+  // State to manage form data
   const [form, setForm] = useState<signInInfo>({
     email: "",
     password: "",
@@ -20,6 +22,7 @@ const SignIn = () => {
   const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const submit = async () => {
+     // Check if both email and password are provided
     if (!form.email || !form.password) {
       Alert.alert("Error", "All fields are required");
       return;
