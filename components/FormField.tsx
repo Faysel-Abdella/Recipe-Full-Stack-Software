@@ -11,6 +11,7 @@ const FormField = ({
   placeholder,
   multiline,
 }: any) => {
+  // a hook for enabling password display
   const [showPassword, setShowPassword] = useState(false);
 
   return (
