@@ -20,8 +20,10 @@ const RecipeListHeader = ({ category, setCategory }: any) => {
         }}
       ></View>
 
+          {/* first page displayed to the user after they signup*/}
       <View className=" py-6">
         <Text className="text-black-200 font-psemibold text-2xl">
+
           Hi, {user ? user.username : ""}!{" "}
         </Text>
         <Text className="text-black-200 font-psemibold text-2xl">
