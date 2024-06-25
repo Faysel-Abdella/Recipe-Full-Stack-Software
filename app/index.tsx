@@ -8,10 +8,13 @@ import { router } from "expo-router";
 
 const App = () => {
   return (
+    // Wrap the content in a SafeAreaView to ensure it's positioned properly on the screen
     <SafeAreaView>
       <View className="relative h-full w-full">
+        {/* Create an absolute positioned view for the main content */}
         <View className="absolute z-10 top-0  mt-20 ">
           <View className="left-6">
+            {/* Display the main title and description */}
             <Text className="text-slate-200 text-4xl font-psemibold">
               Cooking &
             </Text>
@@ -23,6 +26,7 @@ const App = () => {
               easily!
             </Text>
           </View>
+          {/* Add a "Get Started" button */}
           <View className="left-4">
             <CustomButton
               containerStyles="mt-10"
@@ -33,6 +37,7 @@ const App = () => {
             />
           </View>
         </View>
+        {/* Display the background image */}
         <Image
           source={images.index}
           className="h-full w-full"
