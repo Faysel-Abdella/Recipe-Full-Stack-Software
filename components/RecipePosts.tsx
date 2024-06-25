@@ -132,8 +132,7 @@ const RecipePosts = () => {
           />
         }
       />
-
-      // Render the empty state component if the list is empty
+      {/* // Render the empty state component if the list is empty */}
       <Modal
         isVisible={selectedFood !== null}
         onBackdropPress={closeModal}
